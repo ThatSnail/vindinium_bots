@@ -109,7 +109,8 @@ class HBoard:
                 self.hboard[(x, y)] = (board.tiles[x][y], 0) # Initialize tiles with 0 weight
         
     def diffuse_board(self):
-        RW_HERO = (10, lambda hero: (((100 - hero.life) / 100) * 2 - 1) * 80 if hero.name == "crapbot" else -5000)
+        #RW_HERO = (10, lambda hero: (((100 - hero.life) / 100) * 2 - 1) * 80 if hero.name != "crapbot" else -5000)
+        RW_HERO = (10, lambda hero: 100000 if hero.name != "crapbot" else -5000)
         RW_MINE = (5, 10)
         RW_TAVERN = (0, 0)
         RW_AIR = (0, 0)
