@@ -61,6 +61,14 @@ class Node2D:
     def splay(self):
         while self.parent != None:
             if self.parent.parent == None:
-                # Zig
+                self.zig()
+            elif (self is self.parent.llNode and self.parent is self.parent.parent.llNode) or (self is self.parent.lgNode and self.parent is self.parent.parent.lgNode) or (self is self.parent.glNode and self.parent is self.parent.parent.glNode) or (self is self.parent.ggNode and self.parent is self.parent.parent.ggNode):
+                self.zigZig()
             else:
-                if self == self.parent.
+                self.zigZag()
+
+    def zig(self):
+        if self is self.parent.llNode:
+            self.ggNode = self.parent
+            self.parent.llNode = 
+            self.parent, self.parent.parent = self.parent.parent, self
